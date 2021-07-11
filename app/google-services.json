@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "494226220446",
+    "firebase_url": "https://app-restaurante-mexicano-default-rtdb.firebaseio.com",
+    "project_id": "app-restaurante-mexicano",
+    "storage_bucket": "app-restaurante-mexicano.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494226220446:android:2a7e373b2ecb11e945e28f",
+        "android_client_info": {
+          "package_name": "com.example.apptcc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494226220446-dq71iprro8mspqogco2qioqrkgblp5e4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.apptcc",
+            "certificate_hash": "de9a85d6a3677c3dc045f2edb427868cedc038f5"
+          }
+        },
+        {
+          "client_id": "494226220446-0p661n3aq5k4u5btf624fo2i8c0fiol5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkTxsBeFKBUFG4GnexfkHzPsO889JtXfk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494226220446-0p661n3aq5k4u5btf624fo2i8c0fiol5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
