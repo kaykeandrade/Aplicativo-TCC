@@ -29,7 +29,7 @@ public class FavoritosFragment extends Fragment {
     RecyclerView recyclerViewPratosFav;
     TextView textViewPedido1, textViewPedido2;
     ImageView imageViewPedidos;
-    ArrayList<DTOPratosFavoritos> arrayListFavoritos;
+    ArrayList<DTOPratosFavoritos> arrayListFavoritos = new ArrayList<>();
     AdapterPratosFavoritos adapterPratosFavoritos;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
@@ -55,7 +55,6 @@ public class FavoritosFragment extends Fragment {
         return view;
     }
     public void carregarPratosFavoritos(){
-        arrayListFavoritos = new ArrayList<>();
         firebaseAuth = ConfFireBase.getFirebaseAuth();
         databaseReference = ConfFireBase.getFirebaseDatabase().child("pratosFavoritos");
         Query query = databaseReference.orderByChild("emailCliente").equalTo(firebaseAuth.getCurrentUser().getEmail());

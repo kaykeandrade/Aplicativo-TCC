@@ -46,21 +46,26 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth firebaseAuth = ConfFireBase.getFirebaseAuth();
-                firebaseAuth.signInWithEmailAndPassword(editTextEmailLogin.getText().toString(), editTextSenhaLogin.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull  Task<AuthResult> task) {
-                                if(task.isSuccessful()){
-                                    Intent intent = new Intent(LoginActivity.this, ConsultaActivity.class);
-                                    startActivity(intent);
-                                }
-                                else{
-                                    Toast.makeText(LoginActivity.this, "Usuário ou senha incorretos", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                    if(editTextEmailLogin.getText().toString().isEmpty() || editTextSenhaLogin.getText().toString().isEmpty()){
+                        Toast.makeText(LoginActivity.this, "Dados preenchidos incorretamente", Toast.LENGTH_SHORT).show();
                     }
-                });
+                    else{
+                        FirebaseAuth firebaseAuth = ConfFireBase.getFirebaseAuth();
+                        firebaseAuth.signInWithEmailAndPassword(editTextEmailLogin.getText().toString(), editTextSenhaLogin.getText().toString())
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if(task.isSuccessful()){
+                                            Intent intent = new Intent(LoginActivity.this, ConsultaActivity.class);
+                                            startActivity(intent);
+                                        }
+                                        else{
+                                            Toast.makeText(LoginActivity.this, "Usuário ou senha incorretos", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
             }
-        }

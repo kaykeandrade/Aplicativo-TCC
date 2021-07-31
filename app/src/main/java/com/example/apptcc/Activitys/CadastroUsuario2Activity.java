@@ -47,25 +47,28 @@ public class CadastroUsuario2Activity extends AppCompatActivity {
         buttonCadastrarUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth = ConfFireBase.getFirebaseAuth();
-                DTOCliente dtoCliente = new DTOCliente(editTextNome.getText().toString(),
-                        editTextCelular.getText().toString(),
-                        editTextCPF.getText().toString(),
-                        firebaseAuth.getCurrentUser().getEmail(),
-                         ("Sem Imagem.JPEG"));
-                databaseReference = ConfFireBase.getFirebaseDatabase().child("clientes").child(firebaseAuth.getCurrentUser().getUid());
-                databaseReference.setValue(dtoCliente).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Intent intent = new Intent(CadastroUsuario2Activity.this, ConsultaActivity.class);
-                            startActivity(intent);
+                if(editTextNome.getText().toString().isEmpty() || editTextCelular.getText().toString().isEmpty() || editTextCPF.getText().toString().isEmpty()){
+                    Toast.makeText(CadastroUsuario2Activity.this, "Dados preenchidos incorretamente", Toast.LENGTH_SHORT).show();
+                }else {
+                    firebaseAuth = ConfFireBase.getFirebaseAuth();
+                    DTOCliente dtoCliente = new DTOCliente(editTextNome.getText().toString(),
+                            editTextCelular.getText().toString(),
+                            editTextCPF.getText().toString(),
+                            firebaseAuth.getCurrentUser().getEmail(),
+                            ("Sem Imagem.JPEG"));
+                    databaseReference = ConfFireBase.getFirebaseDatabase().child("clientes").child(firebaseAuth.getCurrentUser().getUid());
+                    databaseReference.setValue(dtoCliente).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Intent intent = new Intent(CadastroUsuario2Activity.this, ConsultaActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(CadastroUsuario2Activity.this, "Erro Inesperado", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else{
-                            Toast.makeText(CadastroUsuario2Activity.this, "Erro Inesperado", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                    });
+                }
             }
         });
     }
